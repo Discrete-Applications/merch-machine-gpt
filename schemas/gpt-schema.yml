@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Merch Machine API
+  description: API for generating merchandise based on images.
+  version: 1.0.0
+servers:
+  - url: https://api.discreteapplications.com
+paths:
+  /helloworld:
+    get:
+      operationId: getHelloWorld
+      summary: Returns a simple Hello World message.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /generatemerch/instructions:
+    post:
+      operationId: postGenerateMerchInstructions
+      summary: Endpoint to receive instructions for generating merchandise.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /generatemerch:
+    get:
+      operationId: getGenerateMerch
+      summary: Returns a message from the generate merchandise endpoint.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    post:
+      operationId: postGenerateMerch
+      summary: Creates merchandise based on the provided image URL.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  x-body-name: "name"
+                  description: A string that will appear on the product page, order receipt etc. This defaults to 'Custom Product'"
+                  type: string
+                description:
+                  x-body-name: "description"
+                  description: A string that appears on the product page and can be used to add further detail about the product.
+                  type: string
+                image_url:
+                  x-body-name: "image_url"
+                  description: A string representing a URL to an image file in any image format
+                  type: string
+                colours:
+                  x-body-name: "colours"
+                  desciption: A comma separated list of names that sets the colour of the product the design will be printed on. Passing multiple colours will result in the customer being given an option to choose which they would like to buy. Caution - adding colours increases request response time. Defaults to white. See "availible_options.json" for the full list of options for each product.
+                  type: string
+                item_code:
+                  x-body-name: "item_code"
+                  descirption: A string item code determining the type of product to create. Examples are RNA1 (men's t-shirt), RNB1 (women's t-shirt) and RNC1 (kid's t-shirt). See "availible_options.json" for the full list of options.
+                  type: string
+                price:
+                  x-body-name: "price"
+                  description: Set the product price in GBP. Convert the customer's currency to GBP before sending the request. Defaults to 19.99.
+                  type: string
+                cross_sell:
+                  x-body-name: "cross_sell"
+                  description: A boolean that determines whether or not to show this product's design on other products in a suggestion box on the product page.
+                  type: string
+                  enum:
+                    - True
+                    - False
+      responses:
+        '200':
+          description: Merchandise creation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product_url:
+                    type: string
