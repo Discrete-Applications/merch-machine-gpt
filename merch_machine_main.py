@@ -120,9 +120,8 @@ class generateMerch(Resource):
 
         # validate and update the price
         merch_item_code: str = data["item_code"]
-        merch_price: str = data["price"]
         validated_price: tuple = self.validate_price(
-            merch_price, merch_item_code, price_list
+            merch_item_code, price_list
         )
         if not validated_price[0]:
             logging.error("Invalid price or item code.")
@@ -192,7 +191,7 @@ class generateMerch(Resource):
             logging.error(f"An unexpected error occurred: {e}")
             return "unexpected_error"
 
-    def validate_price(self, price_str: str, item_code: str, price_list: dict) -> tuple:
+    def validate_price(self, item_code: str, price_list: dict) -> tuple:
         """
         Validate the given price against the price list.
 
@@ -205,10 +204,9 @@ class generateMerch(Resource):
         - tuple: A tuple containing a boolean indicating validation success and the validated price.
         """
         try:
-            price = float(price_str)
             if item_code in price_list:
-                item_price = float(price_list[item_code])
-                validated_price = round(price + item_price + 5.00, ndigits=2)
+                item_price = float(price_list[item_code]["gbp"])
+                validated_price = round(item_price + 5.00, ndigits=2)
                 return True, validated_price
             else:
                 return False, None
@@ -283,6 +281,10 @@ def index() -> str:
 @app.route("/privacy")
 def privacy() -> str:
     return render_template("privacy_policy.html")
+
+@app.route("/license")
+def license() -> str:
+    return render_template("LICENSE.html")
 
 
 if __name__ == "__main__":

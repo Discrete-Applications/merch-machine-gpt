@@ -4,29 +4,14 @@ info:
   description: API for generating merchandise based on images.
   version: 1.0.0
 servers:
-  - url: https://api.discreteapplications.com
+  - url: https://merchmachine.discreteapplications.com
 paths:
   /helloworld:
     get:
       operationId: getHelloWorld
       summary: Returns a simple Hello World message.
       responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-
-  /generatemerch/instructions:
-    post:
-      operationId: postGenerateMerchInstructions
-      summary: Endpoint to receive instructions for generating merchandise.
-      responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -37,19 +22,6 @@ paths:
                     type: string
 
   /generatemerch:
-    get:
-      operationId: getGenerateMerch
-      summary: Returns a message from the generate merchandise endpoint.
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
     post:
       operationId: postGenerateMerch
       summary: Creates merchandise based on the provided image URL.
@@ -72,6 +44,7 @@ paths:
                   x-body-name: "image_url"
                   description: A string representing a URL to an image file in any image format
                   type: string
+                  required: true
                 colours:
                   x-body-name: "colours"
                   desciption: A comma separated list of names that sets the colour of the product the design will be printed on. Passing multiple colours will result in the customer being given an option to choose which they would like to buy. Caution - adding colours increases request response time. Defaults to white. See "availible_options.json" for the full list of options for each product.
@@ -92,12 +65,17 @@ paths:
                     - True
                     - False
       responses:
-        '200':
-          description: Merchandise creation successful
+        "200":
+          description: A JSON object with the details of the generated merchandise
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  product_url:
-                    type: string
+                  # Schema for the response can be added here
+        "400":
+          description: Bad request (e.g., invalid content type)
+        "401":
+          description: Unauthorized (e.g., invalid authorization key)
+        "500":
+          description: Internal server error
