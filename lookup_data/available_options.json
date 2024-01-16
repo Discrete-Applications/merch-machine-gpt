@@ -1,0 +1,399 @@
+{
+  "data": [
+    {
+      "item_code": "RNC1",
+      "name": "Kids Plain Organic T-Shirt",
+      "colours": {
+        "Mauve": "https://images.teemill.com/cbhvkuohnzkqugkwflba0stxut0bpozpp9bc41yt9qvni5dr.png",
+        "Pink": "https://images.teemill.com/5ed79e523a5950.33632745.png",
+        "Mustard": "https://images.teemill.com/aalpiEQJkwuTYWtRTQ5KKobUn0LahcBSdzQ5ergYc6G08xFM.png",
+        "Denim Blue": "https://images.teemill.com/5ac7865c4b1b92.69881380.png",
+        "Black": "https://images.teemill.com/5ac784b4ee9c11.75415064.png",
+        "White": "https://images.teemill.com/5ac78910f1d546.28128958.png",
+        "Bright Blue": "https://images.teemill.com/5ac785427cb151.12626171.png"
+      },
+      "design_placement": {
+        "x": 0.353010164190774,
+        "y": 0.2986627043090639,
+        "w": 0.29124315871774825,
+        "h": 0.36924219910846956
+      }
+    },
+    {
+      "item_code": "RNA1",
+      "name": "Mens Plain Organic T-Shirt",
+      "colours": {
+        "Athletic Grey": "https://images.teemill.com/5c38758a730b94.71475303.png",
+        "Tie Dye": "https://images.teemill.com/5aaf94ab0fe488.40476676.png",
+        "Navy Blue": "https://images.teemill.com/5c3875486e31c4.06312878.png",
+        "Black": "https://images.teemill.com/5c3873170cef97.99121192.png",
+        "White": "https://images.teemill.com/5d396bc25c1826.66462174.png",
+        "Mustard": "https://images.teemill.com/5eda07a53999a0.39149089.png",
+        "Red": "https://images.teemill.com/5c387646e9adc4.67004685.png",
+        "Dark Grey": "https://images.teemill.com/5c3873cc9cca98.24350985.png",
+        "Bright Blue": "https://images.teemill.com/5c38734c3dd2d6.28532122.png"
+      },
+      "design_placement": {
+        "x": 0.318608287724785,
+        "y": 0.23588410104011887,
+        "w": 0.35887412040656763,
+        "h": 0.4550520059435364
+      }
+    },
+    {
+      "item_code": "RNA4",
+      "name": "Mens Plain Crew Neck Sweater",
+      "colours": {
+        "Sand": "https://images.teemill.com/8wmr0avqznf4xcy1ymrhbwzoj8pvkgkfthbjmef9jbtax1qv.png",
+        "Brown": "https://images.teemill.com/DMTSkXquxNUshZNA6KkZjMyiVNoTbQ3xA4KvCaAEzHJBWcy7.png",
+        "Khaki": "https://images.teemill.com/4J3nqw9mLcYJL4sxUoDdSXf6eG27JnoYXSh6rolA3dF8yZEJ.png",
+        "White": "https://images.teemill.com/5ef30f167921e9.74601155.png",
+        "Black": "https://images.teemill.com/5xuduzps8ey1mopc5k4hfrskyragksxxkq3eznbuhtcuohtv.png",
+        "Light Heather": "https://images.teemill.com/byfjww1otrhorbemulxvfpilrkt0hkupxexcuyhyempgujcb.png",
+        "Navy Blue": "https://images.teemill.com/vld2t6dux4jojfcg4t32esjtvhhykh1ttbethzmhjr91qtok.png"
+      },
+      "design_placement": {
+        "x": 0.32212666145426117,
+        "y": 0.24591381872213966,
+        "w": 0.35887412040656763,
+        "h": 0.4550520059435364
+      }
+    },
+    {
+      "item_code": "RNA7",
+      "name": "Mens Plain Pullover Hoodie",
+      "colours": {
+        "Black": "https://images.teemill.com/yief9acnhchctjoinnynfqzj7o5mf1bo3qremvdfok5y29hc.png",
+        "Stone Blue": "https://images.teemill.com/idn9tfcx3gmr7fhrwm06vau3e131nuuyo76d2c7ommobna7f.png",
+        "Rust": "https://images.teemill.com/7w3nm5w8jpfz9vlyjmriszagblzta0yoapdhfopyj8psbjpj.png",
+        "White": "https://images.teemill.com/5jizfl8je0lwxdym4zojshhaienotmml1avgb7wd2adxponn.png",
+        "Navy": "https://images.teemill.com/mz7tzzb4y8jgraddcevpagxlhhno2yqntre62gdnlfxaocss.png",
+        "Light Heather": "https://images.teemill.com/6qvg7ke6hx7fswc6pyohjpovabqqil7sih3rnklg56cwu4j0.png"
+      },
+      "design_placement": {
+        "x": 0.33502736512900705,
+        "y": 0.2700594353640416,
+        "w": 0.3256450351837373,
+        "h": 0.413075780089153
+      }
+    },
+    {
+      "item_code": "RNB1",
+      "name": "Womens Plain Organic T-Shirt",
+      "colours": {
+        "Baby Blue": "https://images.teemill.com/5c386daddba748.52153902.png"
+      },
+      "design_placement": {
+        "x": 0.33346364347146207,
+        "y": 0.31835066864784545,
+        "w": 0.33424550430023453,
+        "h": 0.4234769687964339
+      }
+    },
+    {
+      "item_code": "RNB3",
+      "name": "Womens Plain Vest Top",
+      "colours": {
+        "Black": "https://images.teemill.com/5ac776c1ead344.28109990.png",
+        "White": "https://images.teemill.com/5ac777485ec817.47880517.png"
+      },
+      "design_placement": {
+        "x": 0.33346364347146207,
+        "y": 0.3588410104011887,
+        "w": 0.33424550430023453,
+        "h": 0.4234769687964339
+      }
+    },
+    {
+      "item_code": "RNT1",
+      "name": "Colour Tote Bag",
+      "colours": {
+        "Natural": "https://images.teemill.com/5c139861cc3032.80534475.png",
+        "White": "https://images.teemill.com/5c1398281959a8.07182935.png",
+        "Black": "https://images.teemill.com/5c139782d66f97.40197587.png"
+      },
+      "design_placement": {
+        "x": 0.34323690383111805,
+        "y": 0.5059435364041605,
+        "w": 0.31430805316653637,
+        "h": 0.3985884101040119
+      }
+    },
+    {
+      "item_code": "RNB13",
+      "name": "Women's Pullover Hoody",
+      "colours": {
+        "Navy Blue": "https://images.teemill.com/dsvmpc9bbupietvfvuvedtq1wy5gn2sr9f8yhqks2hhdtcov.png",
+        "Stone Blue": "https://images.teemill.com/fzheetuxpo5jehjrmbiatenkddec8t6oixidjphpe1kv2tw9.png",
+        "Mauve": "https://images.teemill.com/1qlqfjgsagojhliktd22a7scf6oi3mnbdxwz33bhth2xmup3.png",
+        "Black": "https://images.teemill.com/gxcfgqsllhhfca9uk5dtxmqn0t183tflmactjgydeavel7jz.png",
+        "Light Heather": "https://images.teemill.com/vphgrbkhpatf7d09xmfmzaf3zgmcfdohmczoythxrvrwqlcd.png"
+      },
+      "design_placement": {
+        "x": 0.33541829554339325,
+        "y": 0.2864041604754829,
+        "w": 0.3295543393275997,
+        "h": 0.4554234769687964
+      }
+    },
+    {
+      "item_code": "RNB14",
+      "name": "Women's Crew Neck T-shirt",
+      "colours": {
+        "White": "https://images.teemill.com/5ac77f4693b545.02106270.png",
+        "Black": "https://images.teemill.com/5ac77d04d8bbb0.62144649.png",
+        "Navy Blue": "https://images.teemill.com/5b5ee0295ea7e9.91819540.png",
+        "Pastel Green": "https://images.teemill.com/jzv2uetzzzpo4cvla3rnaue48fuhpeyjmb0aupzwi4sidrnr.png",
+        "Sky Blue": "https://images.teemill.com/uxdgzcq2t4vtfuxotcjimi38qja2ppkaewaqliguitdms1h6.png",
+        "Stone Blue": "https://images.teemill.com/xtvjddfpbj3vfue7m4rv7q4hq5gqmy0wmmowz0mg0zn7weei.png",
+        "Mauve": "https://images.teemill.com/cjaw4mnlbabo8ndgkyihfzj6daiawtmgrlnjbpbybx4mqlq7.png",
+        "Cherry": "https://images.teemill.com/5ed77e88f09c80.03854160.png",
+        "Mustard": "https://images.teemill.com/5eda081a6570e7.35749881.png",
+        "Khaki": "https://images.teemill.com/5ce2d2b35a6952.11338429.png",
+        "Pink": "https://images.teemill.com/5dbab7f6c6ff67.10845097.png",
+        "Athletic Grey": "https://images.teemill.com/5ac77c6eb43f74.65034087.png"
+      },
+      "design_placement": {
+        "x": 0.3326817826426896,
+        "y": 0.24702823179791977,
+        "w": 0.33424550430023453,
+        "h": 0.4234769687964339
+      }
+    },
+    {
+      "item_code": "RNB18",
+      "name": "Women's Crewneck Sweater",
+      "colours": {
+        "Stone Blue": "https://images.teemill.com/w0qnzqipqejdskbixcnm07qri0r3vgkjolgkxngasxcr9uqr.png",
+        "Mauve": "https://images.teemill.com/13ja7gevpmo2z29heg5s68ifpvvtyao7ghv4mndbdmhjmggy.png",
+        "Cherry": "https://images.teemill.com/u1la3go5ypmrdqgxzdojtcirjjhvqgflcsuytsgualgsg3uf.png",
+        "Navy Blue": "https://images.teemill.com/oelhnlquwlz4ruirqtzwyv93xew9okpmjtfkam1ooesdaqod.png",
+        "White": "https://images.teemill.com/5ef30ffc6fa9e7.03047979.png",
+        "Light Heather": "https://images.teemill.com/5bb22971818196.53280831.png",
+        "Black": "https://images.teemill.com/5bb229701b59a8.60188354.png"
+      },
+      "design_placement": {
+        "x": 0.3397185301016419,
+        "y": 0.262630014858841,
+        "w": 0.3174354964816263,
+        "h": 0.4026745913818722
+      }
+    },
+    {
+      "item_code": "RNB22",
+      "name": "Women's Long Sleeve Top",
+      "colours": {
+        "Stone Blue": "https://images.teemill.com/s4wa6vkgkdys3oi8em6mj87tmzs0kjqpgzmsqed1zqmisyxx.png",
+        "Rust": "https://images.teemill.com/czljvbzwfd1ko1cuugyo8b2mvnwv999mf0wtw6vtgbbf1pvq.png",
+        "Navy Blue": "https://images.teemill.com/riex1nyrrcxfw1pyrxnaikq8ccjhsdshts6iuf8re1ayeco2.png",
+        "White": "https://images.teemill.com/5d3f05757ee900.55792792.png",
+        "Athletic Grey": "https://images.teemill.com/5d3f054fd961f9.59864941.png",
+        "Khaki": "https://images.teemill.com/5d3f052d141ac6.19592438.png",
+        "Black": "https://images.teemill.com/5d3815ed8bb548.88123933.png"
+      },
+      "design_placement": {
+        "x": 0.3487099296325254,
+        "y": 0.26560178306092125,
+        "w": 0.3017982799061767,
+        "h": 0.3800148588410104
+      }
+    },
+    {
+      "item_code": "RNA26",
+      "name": "Men's Long Sleeve T-shirt",
+      "colours": {
+        "Athletic Grey": "https://images.teemill.com/pyv4a2ag57n7f2lv1ojpvqypynwa42d8tmyej6c41jbyu1zg.png",
+        "Navy Blue": "https://images.teemill.com/efyojcqkjaembdfhbhy8fgjz9d5oknsljzjvrgkfw2bjaxyj.png",
+        "White": "https://images.teemill.com/aaLA6l6nh0wc3hBqpim5BAhH8ZQmedV14SeeRmV3trLcq4oI.png",
+        "Black": "https://images.teemill.com/5d3811fd29d2b0.76459450.png",
+        "Denim Blue": "https://images.teemill.com/5d3811f6a3f5c3.32841438.png"
+      },
+      "design_placement": {
+        "x": 0.326817826426896,
+        "y": 0.2288261515601783,
+        "w": 0.34597341673182175,
+        "h": 0.4387072808320951
+      }
+    },
+    {
+      "item_code": "RNB27",
+      "name": "Women's Boxy Tee",
+      "colours": {
+        "White": "https://images.teemill.com/5ee8c7b6c187f8.57127083.png",
+        "Stone Blue": "https://images.teemill.com/qwz6fghywcnzzutzbswtjzgvjl8as7rkw85ggua6znvohyfd.png",
+        "Pastel Tie Dye": "https://images.teemill.com/5ef30b9669ec50.52826726.png",
+        "Black": "https://images.teemill.com/5ee8c750e3d9d3.12550590.png",
+        "Athletic Grey": "https://images.teemill.com/5ef30b33929e41.03765148.png",
+        "Pastel Green": "https://images.teemill.com/q6njw7cdvyq626thx4eihqfv2vv6ffd1lpaszcvhy96pujsv.png",
+        "Sky Blue": "https://images.teemill.com/qmc3fj1k16yndqapcpzral8iikcipapz7l7cswtg3kxzznxu.png"
+      },
+      "design_placement": {
+        "x": 0.35691946833463645,
+        "y": 0.24071322436849926,
+        "w": 0.28655199374511336,
+        "h": 0.3636701337295691
+      }
+    },
+    {
+      "item_code": "RNB36",
+      "name": "Women's Relaxed Fit Tee",
+      "colours": {
+        "White": "https://images.teemill.com/uwkdonoycoj4bkxhjtkhvuusjhdraq0gjqjazfvsiklud1qy.png",
+        "Stone Blue": "https://images.teemill.com/1j2f2gw8ad2tgvs446evtrblyhfheoqafoum6dvv1fnhavoa.png",
+        "Black": "https://images.teemill.com/cd3qc7posqhjolwainivlkpyc523khpvqdjfp47dv1f2pv4r.png"
+      },
+      "design_placement": {
+        "x": 0.3189992181391712,
+        "y": 0.25482912332838037,
+        "w": 0.35887412040656763,
+        "h": 0.4554234769687964
+      }
+    },
+    {
+      "item_code": "RNB33",
+      "name": "Women's Relaxed Fit Hoodie",
+      "colours": {
+        "White": "https://images.teemill.com/frabjjmzngcdvv80ugth5ylmzl7yqy29tlwgvakd7nptmur3.png",
+        "Stone Blue": "https://images.teemill.com/cim8djnoqv1bqdwqu0h2xcy4mykmarximnekwc14s8ydmgfs.png",
+        "Black": "https://images.teemill.com/ofefgoanwjwb3b1ttil3q2o2ob4veh9mforfkcncwyaealta.png",
+        "Athletic Grey": "https://images.teemill.com/3dfjmazjz61gepwjets0nrl0gaat8tqw6l7vyer2thek1xvl.png"
+      },
+      "design_placement": {
+        "x": 0.3393275996872557,
+        "y": 0.29977711738484397,
+        "w": 0.32212666145426117,
+        "h": 0.40824665676077265
+      }
+    },
+    {
+      "item_code": "RNB46",
+      "name": "Women's Plain T-shirt",
+      "colours": {
+        "White": "https://images.teemill.com/akuewg9qfbbtqczm1nyumdqhjyzapq2jzyubck1wyxelhnkc.png",
+        "Stone Blue": "https://images.teemill.com/bolvlb1p5sr9d0qxxds0prq3i2xwtbutlouq05ohrmkoukj9.png"
+      },
+      "design_placement": {
+        "x": 0.3166536356528538,
+        "y": 0.27786032689450224,
+        "w": 0.3655199374511337,
+        "h": 0.46396731054977713
+      }
+    },
+    {
+      "item_code": "RNK25",
+      "name": "Mug",
+      "colours": {
+        "White": "https://images.teemill.com/b6rfolu1xci0tp6gr0xosftdglbt3pfcxhvthorg4bcvtm5h.png"
+      },
+      "design_placement": {
+        "x": 0.06411258795934324,
+        "y": 0.34992570579494797,
+        "w": 0.7380766223612197,
+        "h": 0.30349182763744426
+      }
+    },
+    {
+      "item_code": "RNKEP70",
+      "name": "EP Tote",
+      "colours": {
+        "Black": "https://images.teemill.com/zbveklgz94hlgv9vrjakv5fess1skt46laryzjezbw7j92fu.png"
+      },
+      "design_placement": {
+        "x": 0,
+        "y": 0,
+        "w": 0.003909304143862392,
+        "h": 0.003714710252600297
+      }
+    },
+    {
+      "item_code": "RNP30",
+      "name": "Landscape Art Print",
+      "colours": {
+        "No Frame": "https://images.teemill.com/fnym4jcg5h4r30drunjg4qjwjk4nemiu1qjje8tnngt5iwc3.png",
+        "White Frame": "https://images.teemill.com/pbszfvlhegv34dghay2fqgf57bis9q6tab1jmzteocv7mgan.png",
+        "Natural Frame": "https://images.teemill.com/v2dfqhdvz84uwph8twnnzdmkftetsphvjbaid7pzuhn1gmiw.png",
+        "Black Frame": "https://images.teemill.com/2uvsahhb8y9x6jbjsfreliuklz6ui3ddfknt5mnyv2nr6972.png"
+      },
+      "design_placement": {
+        "x": 0.11063330727130571,
+        "y": 0.2384843982169391,
+        "w": 0.781078967943706,
+        "h": 0.524517087667162
+      }
+    },
+    {
+      "item_code": "RNP31",
+      "name": "Portrait Art Print",
+      "colours": {
+        "No Frame": "https://images.teemill.com/ez0rx7fmoobodsxudpswp3uphsd1bqktv2nuatcfgsavsn8o.png",
+        "White Frame": "https://images.teemill.com/zb7g4thmccfdqpngmmm13rnlu7pv0qwxbgyvhvvl6ukhcc9b.png",
+        "Natural Frame": "https://images.teemill.com/pdplayt9xqty9v5xfaqz5koiudavh6iynxvuekbqoahhe0xk.png",
+        "Black Frame": "https://images.teemill.com/yedpugkvqkxquy6i3riobjel9efhv8ccndinegmdtr9imj6l.png"
+      },
+      "design_placement": {
+        "x": 0.22752150117279124,
+        "y": 0.1311292719167905,
+        "w": 0.5519937451133698,
+        "h": 0.7421991084695394
+      }
+    },
+    {
+      "item_code": "RNP33",
+      "name": "Landscape Recycled Canvas",
+      "colours": {
+        "No Frame": "https://images.teemill.com/gc2fr17em5aizojaaxijfxcqtydewuyt1bvgb2ppgyj6v04d.png",
+        "Black Frame": "https://images.teemill.com/xhhgj1hr2wejdsoppwax4lanf6cwfesfpusaqphbu6z1xkrf.png"
+      },
+      "design_placement": {
+        "x": 0.11063330727130571,
+        "y": 0.2384843982169391,
+        "w": 0.781078967943706,
+        "h": 0.524517087667162
+      }
+    },
+    {
+      "item_code": "RNP32",
+      "name": "Square Art Print",
+      "colours": {
+        "No Frame": "https://images.teemill.com/hvu52p3eg3hdxg0mu9aipnsuefinamff3xmyynoyduckx6vr.png",
+        "White Frame": "https://images.teemill.com/hnaa5rzt4oktdciekvbab1gbcur9eeuyidxni11iexb2geuq.png",
+        "Natural Frame": "https://images.teemill.com/jpcewvqdh3cnvew0bv3mgcu1ioqnljknyp8nu4pwggj9hae1.png",
+        "Black Frame": "https://images.teemill.com/fcween4qwpg9ghfpaxesbhogjb0omo5qcd0fm3vw1wx3xkfs.png"
+      },
+      "design_placement": {
+        "x": 0.14464425332290853,
+        "y": 0.162332838038633,
+        "w": 0.7111024237685692,
+        "h": 0.6757057949479941
+      }
+    },
+    {
+      "item_code": "RNP34",
+      "name": "Portrait Recycled Canvas",
+      "colours": {
+        "No Frame": "https://images.teemill.com/ckg8nfoqp4ed1fojy3nzmg3feriimmnmmekzcku4zvvsfeby.png",
+        "Black Frame": "https://images.teemill.com/tpneyg63z4zjl9luaftc5goc65uxaqut4yqbr68y2yqvvxro.png"
+      },
+      "design_placement": {
+        "x": 0.22752150117279124,
+        "y": 0.1311292719167905,
+        "w": 0.5519937451133698,
+        "h": 0.7421991084695394
+      }
+    },
+    {
+      "item_code": "RNP35",
+      "name": "Square Recycled Canvas",
+      "colours": {
+        "No Frame": "https://images.teemill.com/ij4rvjusvngshre0v3xn2tb9xa5qgoxibxwjcemhzndypvry.png",
+        "Black Frame": "https://images.teemill.com/zuhavbx9rug8uaqqrm1wal50eqt4ypqw8kv583oydhvajatf.png"
+      },
+      "design_placement": {
+        "x": 0.14464425332290853,
+        "y": 0.162332838038633,
+        "w": 0.7111024237685692,
+        "h": 0.6757057949479941
+      }
+    }
+  ]
+}
