@@ -1,44 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merch Machine API</title>
-    <style>
-        /* Add your custom styles here */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 20px;
-        }
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Merch Machine Application</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 
-        h1 {
-            color: #333;
-            text-align: center;
-        }
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+                width: 800px;
+                margin: 0 auto;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
 
-        p {
-            color: #666;
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Merch Machine API Information</h1>
-        <p>
-            <!-- Add your API information here -->
-        </p>
-    </div>
-</body>
-</html>
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="merch-machine-application">Merch Machine Application</h1>
+<p>The Merch Machine is an application that allows users to generate merchandise using images. It provides a RESTful API for generating merchandise and includes web pages for the user interface.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#merch-machine-application">Merch Machine Application</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#api-endpoints">API Endpoints</a></li>
+<li><a href="#web-pages">Web Pages</a></li>
+</ul>
+</li>
+<li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before running the Merch Machine application, make sure you have the following prerequisites:</p>
+<ul>
+<li>Python 3.x</li>
+<li>Flask (installed via pip)</li>
+<li>Flask-RESTful (installed via pip)</li>
+<li>Requests (installed via pip)</li>
+<li>dotenv (installed via pip)</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>
+<p>Clone the repository to your local machine.</p>
+</li>
+<li>
+<p>Install the required dependencies using the following command:</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p>Create a <code>.env</code> file in the project root directory and set the necessary environment variables as described in the <a href="#environment-variables">Environment Variables</a> section.</p>
+</li>
+<li>
+<p>Ensure you have the required folder structure and files:</p>
+<pre><code>- merch-machine/
+  - logs/
+  - merch/
+  - photos/
+  - local/
+    - .env
+</code></pre>
+</li>
+<li>
+<p>Run the application using the following command:</p>
+<pre><code class="language-bash">python merch_machine_main.py
+</code></pre>
+</li>
+</ol>
+<h2 id="usage">Usage</h2>
+<p>The Merch Machine application provides both a RESTful API and web pages for generating merchandise.</p>
+<h3 id="api-endpoints">API Endpoints</h3>
+<ul>
+<li>
+<p><code>/helloworld</code>: A simple endpoint to check if the server is running.</p>
+</li>
+<li>
+<p><code>/generatemerch</code>: A POST request to generate merchandise. Requires proper authorization and content type headers. See the API documentation for details.</p>
+</li>
+</ul>
+<h3 id="web-pages">Web Pages</h3>
+<ul>
+<li>
+<p><code>/</code>: The main web page for the Merch Machine application. Users can interact with the application here.</p>
+</li>
+<li>
+<p><code>/privacy</code>: The privacy policy page for users to review.</p>
+</li>
+</ul>
+<h2 id="environment-variables">Environment Variables</h2>
+<p>The application relies on several environment variables for configuration. These variables can be set in a <code>.env</code> file in the <code>local/</code> directory. Here are the required environment variables:</p>
+<ul>
+<li>
+<p><code>OPENAI_API_KEY</code>: The API key for authenticating with OpenAI (for authorization).</p>
+</li>
+<li>
+<p><code>TEST_API_KEY</code>: A test API key for testing purposes.</p>
+</li>
+<li>
+<p><code>TEEMILL_PUBLIC_TOKEN</code>: The public token for authenticating with Teemill (for authorization).</p>
+</li>
+</ul>
+<h2 id="logging">Logging</h2>
+<p>The application uses the Python <code>logging</code> module to log various events and errors. Log files are stored in the <code>logs/</code> directory. Make sure to configure logging according to your needs, including the log file location, log level, and log format.</p>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions to the Merch Machine application are welcome. If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request. Reach out directly to <a href="mailto:merch_machine@discreteapplications.com">merch_machine@discreteapplications.com</a></p>
+<h2 id="license">License</h2>
+<p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
+
+            
+            
+        </body>
+        </html>

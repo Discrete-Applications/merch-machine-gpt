@@ -1,14 +1,14 @@
 import logging
-import os
 import base64
 import requests
 import json
 
 from flask import Flask, request, render_template
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api # type: ignore
 from datetime import datetime as dt
 from os import getenv
 from pathlib import Path
+from typing import Callable
 
 # global variables
 date: str = dt.now().strftime("%d%b%Y")
@@ -42,14 +42,14 @@ application: Flask = app
 
 # Set up the API endpoints
 class getHelloWorld(Resource):
-    def get(self):
+    def get(self) -> dict[str, str]:
         return {"message": "Hello world!"}
 
 
 class generateMerch(Resource):
-    def post(self):
-        openai_api_key: str = getenv("OPENAI_API_KEY")
-        test_api_key: str = getenv("TEST_API_KEY")
+    def post(self) -> tuple | Callable:
+        openai_api_key: str | None = getenv("OPENAI_API_KEY")
+        test_api_key: str | None  = getenv("TEST_API_KEY")
 
         if (
             request.headers.get("Authorization") != openai_api_key
@@ -57,8 +57,10 @@ class generateMerch(Resource):
         ):
             if app.debug:
                 logging.warning(
-                    (f"Invalid authorization key: {request.headers.get('Authorization')}",
-                    f"expected {test_api_key} or {openai_api_key}")
+                    (
+                        f"Invalid authorization key: {request.headers.get('Authorization')}",
+                        f"expected {test_api_key} or {openai_api_key}",
+                    )
                 )
             return {"message": "Invalid authorization key."}, 401
 
@@ -103,17 +105,17 @@ class generateMerch(Resource):
 
         # get the data from the request
         try:
-            merch_name: str = data["name"]
+            merch_name: str = data["name"] # type: ignore
         except KeyError:
-            merch_name: str = "No name provided"
+            merch_name: str = "No name provided" # type: ignore
         try:
-            merch_description: str = data["description"]
+            merch_description: str = data["description"] # type: ignore
         except KeyError:
-            merch_description: str = "No description provided, contact the dev merch_machine@discreteapplications.com"
+            merch_description: str = "No description provided." # type: ignore
         try:
-            merch_colours: str = data["colours"]
+            merch_colours: str = data["colours"] # type: ignore
         except KeyError:
-            merch_colours: str = "White"
+            merch_colours: str = "White" # type: ignore
         merch_cross_sell: bool = True
 
         # validate and update the price
@@ -124,9 +126,9 @@ class generateMerch(Resource):
         )
         if not validated_price[0]:
             logging.error("Invalid price or item code.")
-            merch_validated_price: str = "0.00"
+            merch_validated_price: str = "0.00" # type: ignore
         else:
-            merch_validated_price: str = str(validated_price[1])
+            merch_validated_price: str = str(validated_price[1]) # type: ignore
 
         final_product = self.get_product(
             {
@@ -220,7 +222,7 @@ class generateMerch(Resource):
             logging.error(f"An unexpected error occurred in validate_price: {e}")
             return False, None
 
-    def get_product(self, options: dict[str, str]) -> dict[str, str]:
+    def get_product(self, options: dict[str, str]) -> Callable | tuple:
         """
         Send a POST request to Teemill to create a product.
 
@@ -233,7 +235,7 @@ class generateMerch(Resource):
         This function sends a POST request to Teemill to create a product using the provided options.
         It handles potential errors gracefully and returns the response if successful.
         """
-        public_teemill_token: str = getenv("TEEMILL_PUBLIC_TOKEN")
+        public_teemill_token: str | None  = getenv("TEEMILL_PUBLIC_TOKEN")
         teemill_create_endpoint: str = "https://teemill.com/omnis/v3/product/create"
         headers = {
             "Content-Type": "application/json",
@@ -274,12 +276,12 @@ api.add_resource(generateMerch, "/generatemerch")
 
 # Set up the web pages
 @app.route("/")
-def index():
+def index() -> str:
     return render_template("index.html")
 
 
 @app.route("/privacy")
-def privacy():
+def privacy() -> str:
     return render_template("privacy_policy.html")
 
 

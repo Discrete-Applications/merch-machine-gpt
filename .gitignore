@@ -7,3 +7,4 @@ logs/
 local/
 photos/
 merch/
+.mypy_cache/
