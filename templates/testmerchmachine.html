@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Merch Machine</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form > * {
+            margin: 5px 0;
+        }
+        form > input[type=submit] {
+            align-self: flex-end;
+        }
+    </style>
+    <h1>Test Merch Machine</h1>
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ form.merch_name.label }} {{ form.merch_name(size=20) }}
+        {{ form.image_url.label }} {{ form.image_url(size=20) }}
+        {{ form.merch_description.label }} {{ form.merch_description }}
+        {{ form.merch_item.label }} {{form.merch_item}}
+        {{ form.merch_colours.label }} {{form.merch_colours}}
+        {{ form.submit() }}
+    </form>
+    <script charset="utf-8" type="text/javascript">
+
+        $(function() {
+        
+            // jQuery selection for the 2 select boxes
+            var dropdown = {
+                merch_item: $('#select_merch_item'),
+                merch_colours: $('#select_merch_colours')
+            };
+        
+            // call to update on load
+            updateColours();
+        
+            // function to call XHR and update county dropdown
+            function updateColours() {
+                var send = {
+                    merch_item: dropdown.merch_item.val()
+                };
+                dropdown.merch_colours.attr('disabled', 'disabled');
+                dropdown.merch_colours.empty();
+                $.getJSON("{{ url_for('_get_colours') }}", send, function(data) {
+                    data.forEach(function(item) {
+                        dropdown.merch_colours.append(
+                            $('<option>', {
+                                value: item[0],
+                                text: item[1]
+                            })
+                        );
+                    });
+                    dropdown.merch_colours.attr('disabled', null);
+                });
+            }
+        
+            // event listener to state dropdown change
+            dropdown.merch_item.on('change', function() {
+                updateColours();
+            });
+        
+        });
+        </script>
+</body>
+</html>

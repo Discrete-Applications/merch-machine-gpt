@@ -2,9 +2,19 @@ import logging
 import base64
 import requests
 import json
+import secrets
 
-from flask import Flask, request, render_template
-from flask_restful import Resource, Api # type: ignore
+from flask import Flask, request, render_template, flash, redirect, url_for, jsonify
+from flask_restful import Resource, Api  # type: ignore
+from flask_wtf import FlaskForm, CSRFProtect
+from wtforms import (
+    StringField,
+    SubmitField,
+    SelectField,
+    SelectMultipleField,
+    TextAreaField,
+)
+from wtforms.validators import DataRequired, URL
 from datetime import datetime as dt
 from os import getenv
 from pathlib import Path
@@ -13,6 +23,9 @@ from typing import Callable
 # global variables
 date: str = dt.now().strftime("%d%b%Y")
 price_list: dict = json.load(open(Path.cwd() / "lookup_data/price_list.json", "r"))
+merch_options: dict = json.load(
+    open(Path.cwd() / "lookup_data/available_options.json", "r")
+)
 
 # build folders if they do not exist
 log_folder: Path = Path.cwd() / Path("logs")
@@ -39,6 +52,10 @@ app: Flask = Flask(__name__)
 api: Api = Api(app)
 application: Flask = app
 
+# set up CSRF protection
+app.config["SECRET_KEY"] = secrets.token_urlsafe(16)
+csrf = CSRFProtect(app)
+
 
 # Set up the API endpoints
 class getHelloWorld(Resource):
@@ -49,7 +66,7 @@ class getHelloWorld(Resource):
 class generateMerch(Resource):
     def post(self) -> tuple | Callable:
         openai_api_key: str | None = getenv("OPENAI_API_KEY")
-        test_api_key: str | None  = getenv("TEST_API_KEY")
+        test_api_key: str | None = getenv("TEST_API_KEY")
 
         if (
             request.headers.get("Authorization") != openai_api_key
@@ -105,29 +122,27 @@ class generateMerch(Resource):
 
         # get the data from the request
         try:
-            merch_name: str = data["name"] # type: ignore
+            merch_name: str = data["name"]  # type: ignore
         except KeyError:
-            merch_name: str = "No name provided" # type: ignore
+            merch_name: str = "No name provided"  # type: ignore
         try:
-            merch_description: str = data["description"] # type: ignore
+            merch_description: str = data["description"]  # type: ignore
         except KeyError:
-            merch_description: str = "No description provided." # type: ignore
+            merch_description: str = "No description provided."  # type: ignore
         try:
-            merch_colours: str = data["colours"] # type: ignore
+            merch_colours: str = data["colours"]  # type: ignore
         except KeyError:
-            merch_colours: str = "White" # type: ignore
+            merch_colours: str = "White"  # type: ignore
         merch_cross_sell: bool = True
 
         # validate and update the price
         merch_item_code: str = data["item_code"]
-        validated_price: tuple = self.validate_price(
-            merch_item_code, price_list
-        )
+        validated_price: tuple = self.validate_price(merch_item_code, price_list)
         if not validated_price[0]:
             logging.error("Invalid price or item code.")
-            merch_validated_price: str = "0.00" # type: ignore
+            merch_validated_price: str = "0.00"  # type: ignore
         else:
-            merch_validated_price: str = str(validated_price[1]) # type: ignore
+            merch_validated_price: str = str(validated_price[1])  # type: ignore
 
         final_product = self.get_product(
             {
@@ -233,7 +248,7 @@ class generateMerch(Resource):
         This function sends a POST request to Teemill to create a product using the provided options.
         It handles potential errors gracefully and returns the response if successful.
         """
-        public_teemill_token: str | None  = getenv("TEEMILL_PUBLIC_TOKEN")
+        public_teemill_token: str | None = getenv("TEEMILL_PUBLIC_TOKEN")
         teemill_create_endpoint: str = "https://teemill.com/omnis/v3/product/create"
         headers = {
             "Content-Type": "application/json",
@@ -272,6 +287,16 @@ api.add_resource(getHelloWorld, "/helloworld")
 api.add_resource(generateMerch, "/generatemerch")
 
 
+# Set up the forms
+class MyForm(FlaskForm):
+    merch_name = StringField("Merch Name", validators=[])
+    image_url = StringField("Photo Url", validators=[DataRequired(), URL()])
+    merch_description = TextAreaField("Merch Description")
+    merch_item = SelectField("Merch Item", id="select_merch_item")
+    merch_colours = SelectMultipleField("Merch Colour(s)", id="select_merch_colours")
+    submit = SubmitField("Submit")
+
+
 # Set up the web pages
 @app.route("/")
 def index() -> str:
@@ -282,9 +307,48 @@ def index() -> str:
 def privacy() -> str:
     return render_template("privacy_policy.html")
 
+
 @app.route("/license")
 def license() -> str:
     return render_template("LICENSE.html")
+
+
+@app.route("/testmerchmachine", methods=["GET", "POST"])
+def testmerchmachine() -> str:
+    form = MyForm()
+
+    # populate the merch item select field
+    merch_item_choices: list[tuple[str, str]] = [
+        (merch_options["data"][item]["item_code"], merch_options["data"][item]["name"])
+        for item in range(len(merch_options["data"]))
+    ]
+    merch_color_choices: list[tuple[str, str]] = [
+        (color, color)
+        for item in range(len(merch_options["data"]))
+        for color in merch_options["data"][item]["colours"]
+    ]
+    form.merch_item.choices = merch_item_choices
+    form.merch_colours.choices = merch_color_choices
+
+    if request.method == "GET":
+        return render_template("testmerchmachine.html", form=form)
+    if form.validate_on_submit() and request.form["form_name"] == "MyForm":
+        flash(f"merch: {form.merch_item.data} color: {form.merch_colours.data}")
+    return redirect(url_for("testmerchmachine"))
+
+
+@app.route("/_get_colours")
+def _get_colours():
+    merch_item = request.args.get("merch_item", type=str)
+    print("merch_item: ", merch_item)
+    colours = [
+        (color, color)
+        for m in range(len(merch_options["data"]))
+        for color in merch_options["data"][m]["colours"]
+        if merch_options["data"][m]["item_code"] == merch_item
+    ]
+    print("colours: ", colours)
+    return jsonify(colours)
 
 
 if __name__ == "__main__":
