@@ -4,7 +4,7 @@ import requests
 import json
 import secrets
 
-from flask import Flask, request, render_template, flash, redirect, url_for, jsonify
+from flask import Flask, request, render_template, session, redirect, url_for, jsonify
 from flask_restful import Resource, Api  # type: ignore
 from flask_wtf import FlaskForm, CSRFProtect
 from wtforms import (
@@ -219,9 +219,12 @@ class generateMerch(Resource):
         - tuple: A tuple containing a boolean indicating validation success and the validated price.
         """
         try:
+            print(item_code)
             if item_code in price_list:
                 item_price = float(price_list[item_code]["gbp"])
                 validated_price = round(item_price + 5.00, ndigits=2)
+                validated_price = str(validated_price) + "0" if len(str(validated_price).split('.')[1]) == 1 else str(validated_price)
+                print(validated_price)
                 return True, validated_price
             else:
                 return False, None
@@ -293,7 +296,7 @@ class MyForm(FlaskForm):
     image_url = StringField("Photo Url", validators=[DataRequired(), URL()])
     merch_description = TextAreaField("Merch Description")
     merch_item = SelectField("Merch Item", id="select_merch_item")
-    merch_colours = SelectMultipleField("Merch Colour(s)", id="select_merch_colours")
+    merch_colours = SelectMultipleField("Merch Colour(s)", id="select_merch_colours", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
 
@@ -327,28 +330,52 @@ def testmerchmachine() -> str:
         for item in range(len(merch_options["data"]))
         for color in merch_options["data"][item]["colours"]
     ]
-    form.merch_item.choices = merch_item_choices
+    form.merch_item.choices = sorted(merch_item_choices)
     form.merch_colours.choices = merch_color_choices
 
     if request.method == "GET":
         return render_template("testmerchmachine.html", form=form)
-    if form.validate_on_submit() and request.form["form_name"] == "MyForm":
-        flash(f"merch: {form.merch_item.data} color: {form.merch_colours.data}")
-    return redirect(url_for("testmerchmachine"))
+    if form.validate_on_submit():
+        # get the image data
+        generator: object = generateMerch()
+        merch_image_url: str = form.image_url.data
+        result: str = generator.process_image(image_url=merch_image_url)
+        price: str = generator.validate_price(form.merch_item.data, price_list)
+        teemill_request: dict = generator.get_product(
+            {
+                "image_url": result,
+                "name": form.merch_name.data,
+                "description": form.merch_description.data,
+                "price": price,
+                "colours": form.merch_colours.data,
+                "item_code": form.merch_item.data,
+                "cross_sell": True,
+            }
+        )
+        if teemill_request is None:
+            return render_template("testmerchmachine.html", form=form)
+        else:
+            session['merch_url'] = teemill_request["url"]
+            session['colors'] = teemill_request["colours"]
+            session['name'] = teemill_request["name"] if teemill_request["name"] != "" else "No name provided."
+            session['description'] = form.merch_description.data if form.merch_description.data != "" else "No description provided."
+            session['price'] = teemill_request["price"]["gbp"]
+            return redirect(url_for("preview"))
 
+@app.route("/preview")
+def preview() -> str:
+    return render_template("preview.html", name=session["name"], description=session["description"], merch_url=session['merch_url'], colors=session['colors'])
 
 @app.route("/_get_colours")
 def _get_colours():
     merch_item = request.args.get("merch_item", type=str)
-    print("merch_item: ", merch_item)
     colours = [
         (color, color)
         for m in range(len(merch_options["data"]))
         for color in merch_options["data"][m]["colours"]
         if merch_options["data"][m]["item_code"] == merch_item
     ]
-    print("colours: ", colours)
-    return jsonify(colours)
+    return jsonify(sorted(colours))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Merch Machine Preview</title>
+</head>
+<body>
+    <h1>Merch Preview</h1>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        .grid-item {
+            margin-bottom: 20px;
+        }
+
+        .grid-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+            .side {
+                display: flex;
+                align-items: center;
+            }
+
+            .side h2:not(:last-child) {
+                margin-right: .25em;
+            }
+        </style>
+        <div class="header">
+            <h2><a href="{{ merch_url }}">{{ name }}</a></h2>
+            <div class="side">
+                <h2><a href="{{ url_for('testmerchmachine') }}">REGENERATE</a></h2>
+                <h2><a href="{{ merch_url }}">BUY NOW</a></h2>
+            </div>
+        </div>
+    <h3> Description: </h3>
+    <p>{{ description }}</p>
+    <div class="grid-container">
+        {% for colorname, colorurl in colors.items() %}
+            <div class="grid-item">
+                <h2>{{ colorname }}</h2>
+                <img src="{{ colorurl }}" alt="{{ colorname }} color">
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
